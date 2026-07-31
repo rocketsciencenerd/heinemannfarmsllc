@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#D4620A"/>
+  <!-- Log end-grain / tree rings -->
+  <circle cx="16" cy="16" r="11.5" fill="none" stroke="#FDF3E7" stroke-width="2"/>
+  <circle cx="16" cy="16" r="7.5"  fill="none" stroke="#FDF3E7" stroke-width="1.5"/>
+  <circle cx="16" cy="16" r="4"    fill="none" stroke="#FDF3E7" stroke-width="1.2"/>
+  <circle cx="16" cy="16" r="1.2"  fill="#FDF3E7"/>
+  <!-- Bark edge suggestion (top arc, thicker) -->
+  <path d="M4.5 16 A11.5 11.5 0 0 1 27.5 16" fill="none" stroke="#FDF3E7" stroke-width="3" opacity="0.35"/>
+</svg>
