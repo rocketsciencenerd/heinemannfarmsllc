@@ -1366,8 +1366,7 @@
             </div>
 
             <div class="fade-up">
-                <!-- To actually send emails, connect this form to Formspree or EmailJS -->
-                <form onsubmit="handleSubmit(event)">
+                <form id="contactForm" onsubmit="handleSubmit(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label>First Name</label>
@@ -1466,19 +1465,46 @@
 
     fadeEls.forEach(el => observer.observe(el));
 
-    // Contact form — wire to Formspree / EmailJS for real sending
-    function handleSubmit(e) {
+    // Contact form — submits to Formspree, forwards to heinemannfarmsllc@gmail.com
+    // ACTIVATE: replace FORMSPREE_ID below with your ID from formspree.io
+    const FORMSPREE_ID = 'FORMSPREE_ID';
+
+    async function handleSubmit(e) {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
-        btn.textContent = 'Message Sent!';
-        btn.style.background = '#2D7A3A';
+        const form = e.target;
+
+        btn.textContent = 'Sending…';
         btn.disabled = true;
-        setTimeout(() => {
-            btn.textContent = 'Send Message';
-            btn.style.background = '';
-            btn.disabled = false;
-            e.target.reset();
-        }, 3500);
+
+        try {
+            const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (res.ok) {
+                btn.textContent = 'Message Sent!';
+                btn.style.background = '#2D7A3A';
+                form.reset();
+                setTimeout(() => {
+                    btn.textContent = 'Send Message';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
+            } else {
+                throw new Error();
+            }
+        } catch {
+            btn.textContent = 'Error — please try again';
+            btn.style.background = '#8B2020';
+            setTimeout(() => {
+                btn.textContent = 'Send Message';
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 3500);
+        }
     }
 </script>
 
