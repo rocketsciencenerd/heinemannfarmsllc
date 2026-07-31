@@ -1036,35 +1036,16 @@
 
             .nav-links { display: none; }
 
-            /* Nav itself expands to full-screen overlay — avoids backdrop-filter stacking context bug */
-            nav.menu-open {
-                inset: 0;
-                background: rgba(20,8,0,0.97) !important;
-                backdrop-filter: none !important;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-            }
-
-            nav.menu-open .nav-logo {
-                position: absolute;
-                top: 1rem;
-                left: 1.25rem;
-            }
-
-            nav.menu-open .hamburger {
-                position: absolute;
-                top: 1rem;
-                right: 1.25rem;
-            }
-
             .nav-links.open {
                 display: flex;
                 flex-direction: column;
+                position: fixed;
+                inset: 0;
+                background: rgba(20,8,0,0.97);
                 align-items: center;
                 justify-content: center;
                 gap: 2.5rem;
+                z-index: 999;
             }
 
             .nav-links.open a { font-size: 1.1rem; }
@@ -1884,16 +1865,13 @@
     // Mobile nav
     const hamburger = document.getElementById('hamburger');
     const navLinks  = document.getElementById('navLinks');
-    const navbar    = document.getElementById('navbar');
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('open');
-        navbar.classList.toggle('menu-open');
     });
 
     function closeNav() {
         navLinks.classList.remove('open');
-        navbar.classList.remove('menu-open');
     }
 
     // Click outside to close
@@ -1902,7 +1880,6 @@
             !navLinks.contains(e.target) &&
             !hamburger.contains(e.target)) {
             navLinks.classList.remove('open');
-            navbar.classList.remove('menu-open');
         }
     });
 
