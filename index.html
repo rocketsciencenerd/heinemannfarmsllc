@@ -641,19 +641,27 @@
         .service-card:hover { background: #170800; }
 
         .svc-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 4px;
+            width: 48px;
+            height: 48px;
+            background: rgba(212,98,10,0.1);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 1.5rem;
-            overflow: hidden;
-            flex-shrink: 0;
+            transition: background 0.3s;
         }
 
-        .svc-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .service-card:hover .svc-icon { background: rgba(212,98,10,0.22); }
+
+        .svc-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--orange-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .service-card h3 {
@@ -755,12 +763,16 @@
         .port-item:nth-child(10) { grid-column: span 4; }
         .port-item:nth-child(11) { grid-column: span 6; }
         .port-item:nth-child(12) { grid-column: span 6; }
-        .port-item:nth-child(13) { grid-column: span 12; }
-        .port-item:nth-child(14) { grid-column: span 8; }
-        .port-item:nth-child(15) { grid-column: span 4; }
-        .port-item:nth-child(16) { grid-column: span 8; }
-        .port-item:nth-child(17) { grid-column: span 4; }
-        .port-item:nth-child(18) { grid-column: span 12; }
+        .port-item:nth-child(13) { grid-column: span 6; }
+        .port-item:nth-child(14) { grid-column: span 6; }
+        .port-item:nth-child(15) { grid-column: span 6; }
+        .port-item:nth-child(16) { grid-column: span 6; }
+        .port-item:nth-child(17) { grid-column: span 12; }
+        .port-item:nth-child(18) { grid-column: span 8; }
+        .port-item:nth-child(19) { grid-column: span 4; }
+        .port-item:nth-child(20) { grid-column: span 8; }
+        .port-item:nth-child(21) { grid-column: span 4; }
+        .port-item:nth-child(22) { grid-column: span 12; }
 
         .port-inner {
             position: relative;
@@ -1396,7 +1408,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_1868.jpg" alt="Walnut and maple jewelry box">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 10h18"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg>
                 </div>
                 <h3>Jewelry & Keepsake Boxes</h3>
                 <p>Our signature piece. Handcrafted from walnut, maple, and cherry with flox-lined interiors, brass hardware, and hand-fitted finger joints.</p>
@@ -1405,7 +1417,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_1867.jpg" alt="Open heirloom chest with birdseye maple interior">
+                    <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 12h.01M8 12h.01M16 12h.01"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
                 </div>
                 <h3>Heirloom Chests</h3>
                 <p>Larger keepsake chests and treasure boxes built to be passed down. We match wood species and design to your story and your family.</p>
@@ -1414,7 +1426,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_0236.jpg" alt="Custom oak mission end table with glass top and flowers">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
                 <h3>Custom Furniture</h3>
                 <p>Tables, benches, shelving, and more — built from solid hardwood to your dimensions, your finish, your style. No particleboard, ever.</p>
@@ -1423,7 +1435,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_E818DF78.jpg" alt="Handcrafted folding sling chair">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
                 <h3>Gift & Occasion Pieces</h3>
                 <p>Weddings, retirements, anniversaries — a hand-crafted wooden piece is a gift that outlasts any occasion. Custom engraving available.</p>
@@ -1432,7 +1444,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_0235.jpg" alt="Custom oak mission end table with glass top, flowers and shelf display">
+                    <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
                 </div>
                 <h3>Home Décor & Signs</h3>
                 <p>Serving boards, wall art, carved signs, and decorative pieces. We bring the warmth of real wood into every room.</p>
@@ -1441,7 +1453,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_8165.jpg" alt="Custom wood dashboard for vintage car">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
                 </div>
                 <h3>Custom Commissions</h3>
                 <p>Have something in mind that doesn't fit a category? Bring your idea. We love a challenge — the stranger the brief, the better the story.</p>
@@ -1450,7 +1462,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_1248.jpg" alt="Custom camper dinette table">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M5 8v13M19 8v13M3 21h18"/><path d="M9 12h6"/></svg>
                 </div>
                 <h3>Camper & RV Interiors</h3>
                 <p>Custom-fit dinette tables, fold-down surfaces, and built-in woodwork designed to make your camper feel like home. Measured to fit your rig.</p>
@@ -1459,7 +1471,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_8757.jpg" alt="Hardwood cutting board with food">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
                 </div>
                 <h3>Countertops & Cutting Boards</h3>
                 <p>Butcher block countertops, end-grain cutting boards, and stove covers built from hardwood. Functional, food-safe, and built to outlast the kitchen.</p>
@@ -1468,7 +1480,7 @@
             <div class="service-card fade-up">
 
                 <div class="svc-icon">
-                    <img src="images/IMG_8549.jpg" alt="Built-in wood cabinet and shelving">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg>
                 </div>
                 <h3>Custom Shelving</h3>
                 <p>Built-in shelving, cabinetry, and storage solutions crafted from solid wood. Designed around your space — no off-the-shelf dimensions, no compromises.</p>
