@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heinemann Farms LLC | Craftsmanship & Land Care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --orange-dark: #B54D00;
+            --orange: #D4620A;
+            --orange-mid: #E8720A;
+            --orange-light: #F4A261;
+            --amber: #FBB040;
+            --cream: #FDF3E7;
+            --cream-dark: #F0DEC4;
+            --earth: #3D1C02;
+            --earth-dark: #1A0A00;
+            --text: #2D1505;
+            --text-muted: #7A5A45;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.4rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.35s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(20, 8, 0, 0.96);
+            backdrop-filter: blur(12px);
+            padding: 0.85rem 2.5rem;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            line-height: 1.1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo span {
+            font-size: 0.62rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--orange-light); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s;
+            border-radius: 1px;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            height: 100vh;
+            min-height: 680px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 65% 35%, rgba(200, 90, 10, 0.65) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 75%, rgba(251, 176, 64, 0.28) 0%, transparent 50%),
+                linear-gradient(155deg, #080200 0%, #240C00 35%, #7A3200 70%, #C46010 100%);
+        }
+
+        .hero-grain {
+            position: absolute;
+            inset: 0;
+            opacity: 0.18;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            padding: 2rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--orange-light);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 1px;
+            background: var(--orange-light);
+            opacity: 0.55;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7.5vw, 5.75rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.04;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--orange-light);
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2.2vw, 1.45rem);
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            border: 1px solid rgba(244,162,97,0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            background: rgba(212,98,10,0.12);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--orange);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 1rem 2.5rem;
+            border-radius: 2px;
+            border: 2px solid var(--orange);
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--orange-light);
+            border-color: var(--orange-light);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 1rem 2.5rem;
+            border-radius: 2px;
+            border: 2px solid rgba(255,255,255,0.22);
+            transition: all 0.25s ease;
+            margin-left: 0.75rem;
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(255,255,255,0.55);
+            color: #fff;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bob 2.2s ease-in-out infinite;
+        }
+
+        .scroll-hint svg { width: 18px; opacity: 0.35; }
+
+        @keyframes bob {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(7px); }
+        }
+
+        /* ── SHARED SECTION STYLES ── */
+        section { padding: 7rem 2rem; }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: currentColor;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--earth);
+            line-height: 1.14;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-body {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--text-muted);
+        }
+
+        /* ── ABOUT ── */
+        #about { background: var(--cream); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image-wrap { position: relative; }
+
+        .about-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(145deg, #7A3200, #C46010, #F4A261);
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            color: rgba(255,255,255,0.35);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .about-photo-placeholder svg {
+            width: 36px;
+            stroke: rgba(255,255,255,0.4);
+            fill: none;
+            stroke-width: 1;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -1.75rem;
+            right: -1.75rem;
+            width: 168px;
+            height: 168px;
+            background: var(--orange);
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.25rem;
+            color: #fff;
+        }
+
+        .about-badge .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .about-badge .lbl {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-top: 0.35rem;
+        }
+
+        .about-text { padding-right: 1rem; }
+
+        .about-body { max-width: 52ch; }
+
+        .about-body + .about-body { margin-top: 1rem; }
+
+        .about-pillars {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.75rem;
+        }
+
+        .pillar {
+            flex: 1;
+            border-top: 2px solid var(--orange);
+            padding-top: 0.9rem;
+        }
+
+        .pillar strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--earth);
+            margin-bottom: 0.35rem;
+        }
+
+        .pillar p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ── SERVICES ── */
+        #services { background: var(--earth-dark); }
+
+        #services .eyebrow { color: var(--orange-light); }
+        #services .section-title { color: #fff; }
+
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            gap: 2rem;
+        }
+
+        .services-intro {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.45);
+            max-width: 340px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .service-card {
+            background: #0C0400;
+            padding: 2.75rem 2.25rem;
+            transition: background 0.3s;
+        }
+
+        .service-card:hover { background: #170800; }
+
+        .svc-num {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            color: rgba(212,98,10,0.45);
+            margin-bottom: 1.5rem;
+        }
+
+        .svc-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(212,98,10,0.1);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .service-card:hover .svc-icon { background: rgba(212,98,10,0.22); }
+
+        .svc-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--orange-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 0.65rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.8;
+        }
+
+        /* ── QUOTE BANNER ── */
+        #quote-banner {
+            background: var(--orange);
+            padding: 5.5rem 2rem;
+            text-align: center;
+        }
+
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(255,255,255,0.2);
+            line-height: 0.5;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+            font-style: italic;
+            color: #fff;
+            max-width: 760px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.42;
+        }
+
+        .quote-attr {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* ── PORTFOLIO ── */
+        #portfolio { background: var(--cream-dark); }
+
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            gap: 1.5rem;
+        }
+
+        .port-btn {
+            background: var(--orange);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.85rem 2rem;
+            border-radius: 2px;
+            border: 2px solid var(--orange);
+            transition: all 0.25s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .port-btn:hover {
+            background: transparent;
+            color: var(--orange);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 10px;
+        }
+
+        .port-item { overflow: hidden; border-radius: 2px; position: relative; cursor: pointer; }
+        .port-item:nth-child(1) { grid-column: span 8; }
+        .port-item:nth-child(2) { grid-column: span 4; }
+        .port-item:nth-child(3) { grid-column: span 4; }
+        .port-item:nth-child(4) { grid-column: span 4; }
+        .port-item:nth-child(5) { grid-column: span 4; }
+        .port-item:nth-child(6) { grid-column: span 12; }
+
+        .port-inner {
+            position: relative;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .port-item:nth-child(1) .port-inner { min-height: 400px; }
+        .port-item:nth-child(6) .port-inner { min-height: 260px; }
+
+        .port-bg {
+            position: absolute;
+            inset: 0;
+            transition: transform 0.55s ease;
+        }
+
+        .port-item:hover .port-bg { transform: scale(1.05); }
+
+        /* gradient fallbacks — user replaces with <img> tags */
+        .pb1 { background: linear-gradient(140deg, #280E00, #7A3000, #C45800); }
+        .pb2 { background: linear-gradient(140deg, #180800, #582400, #9A4000); }
+        .pb3 { background: linear-gradient(140deg, #0C0400, #3A1800, #703000); }
+        .pb4 { background: linear-gradient(140deg, #1A0800, #622A00, #AA4A00); }
+        .pb5 { background: linear-gradient(140deg, #220C00, #743400, #CC5C0A); }
+        .pb6 { background: linear-gradient(140deg, #0A0300, #280E00, #562200); }
+
+        .port-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .port-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.2);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        .port-placeholder svg {
+            width: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1;
+            opacity: 0.6;
+        }
+
+        .port-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange-light);
+            background: rgba(20,8,0,0.6);
+            padding: 0.3rem 0.7rem;
+            border-radius: 100px;
+            backdrop-filter: blur(6px);
+        }
+
+        .port-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(20,8,0,0.88) 0%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.75rem;
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .port-item:hover .port-overlay { opacity: 1; }
+
+        .port-overlay h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .port-overlay p {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ── CONTACT ── */
+        #contact { background: var(--earth); }
+
+        #contact .eyebrow { color: var(--orange-light); }
+        #contact .section-title { color: #fff; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-text { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.82; margin-bottom: 2.5rem; }
+
+        .contact-detail {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.15rem;
+        }
+
+        .cd-icon {
+            width: 34px;
+            height: 34px;
+            background: rgba(212,98,10,0.18);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cd-icon svg {
+            width: 15px;
+            stroke: var(--orange-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .cd-text strong {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 0.15rem;
+        }
+
+        .cd-text span { font-size: 0.88rem; color: rgba(255,255,255,0.55); }
+
+        .form-group { margin-bottom: 1.1rem; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 0.45rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.055);
+            border: 1px solid rgba(255,255,255,0.09);
+            color: #fff;
+            padding: 0.8rem 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            border-radius: 2px;
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .form-group select { cursor: pointer; }
+        .form-group select option { background: #2A1000; }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--orange); }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255,255,255,0.22); }
+
+        .form-group textarea { resize: vertical; min-height: 115px; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--orange);
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background 0.25s;
+        }
+
+        .form-submit:hover { background: var(--orange-mid); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--earth-dark);
+            padding: 2.25rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.25);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--orange-light); }
+
+        /* ── ANIMATIONS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 960px) {
+            .nav-links { display: none; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                inset: 0;
+                background: rgba(20,8,0,0.97);
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                z-index: 999;
+            }
+
+            .nav-links.open a { font-size: 1.1rem; }
+            .hamburger { display: flex; }
+
+            section { padding: 5rem 1.25rem; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-text { padding-right: 0; }
+            .about-badge { display: none; }
+            .about-pillars { flex-direction: column; gap: 1.25rem; }
+
+            .services-header { flex-direction: column; align-items: flex-start; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+
+            .portfolio-header { flex-direction: column; align-items: flex-start; }
+            .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .port-item:nth-child(n) { grid-column: span 1; }
+
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+
+            footer { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+
+        @media (max-width: 580px) {
+            .hero-title { font-size: clamp(2.4rem, 11vw, 3.5rem); }
+            .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+            .hero-content .btns { display: flex; flex-direction: column; align-items: center; gap: 0; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .port-item:nth-child(n) { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="navbar">
+    <a href="#" class="nav-logo">
+        Heinemann Farms LLC
+        <span>Wisconsin, USA</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#about"     onclick="closeNav()">About</a></li>
+        <li><a href="#services"  onclick="closeNav()">Services</a></li>
+        <li><a href="#portfolio" onclick="closeNav()">Portfolio</a></li>
+        <li><a href="#contact"   onclick="closeNav()">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-content">
+        <div class="hero-eyebrow">Heinemann Farms LLC</div>
+        <h1 class="hero-title">Built by <em>Hand,</em><br>Built to Last</h1>
+        <p class="hero-subtitle">Craftsmanship rooted in the land</p>
+        <div class="hero-tags">
+            <span class="hero-tag">Tractor Repair</span>
+            <span class="hero-tag">Vintage Autos</span>
+            <span class="hero-tag">Woodworking</span>
+            <span class="hero-tag">Boat Restoration</span>
+            <span class="hero-tag">Tree Planting</span>
+            <span class="hero-tag">Gardening</span>
+        </div>
+        <div class="btns">
+            <a href="#services" class="btn-primary">View Services</a>
+            <a href="#contact"  class="btn-outline">Get in Touch</a>
+        </div>
+    </div>
+    <div class="scroll-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+        Scroll
+    </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image-wrap fade-up">
+                <!--
+                    PHOTO TIP: Replace the div below with:
+                    <img src="./images/about.jpg" alt="Heinemann Farms" class="about-photo" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;">
+                -->
+                <div class="about-photo-placeholder">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    <span>Add your photo here</span>
+                </div>
+                <div class="about-badge">
+                    <span class="num">20+</span>
+                    <span class="lbl">Years of Experience</span>
+                </div>
+            </div>
+            <div class="about-text fade-up">
+                <div class="eyebrow">Our Story</div>
+                <h2 class="section-title">Honest Work,<br>Honest Craft</h2>
+                <p class="section-body about-body">
+                    At Heinemann Farms LLC, we believe in doing things right the first time. Whether it's breathing new life into a vintage tractor, hand-crafting a piece of custom woodwork, or coaxing a tired old boat back onto the water — we bring the same pride and precision to every single job.
+                </p>
+                <p class="section-body about-body">
+                    We're a working farm and shop rooted in Wisconsin. From the land we tend to the machines we restore, everything we do carries a commitment to quality that outlasts trends and seasons.
+                </p>
+                <div class="about-pillars">
+                    <div class="pillar">
+                        <strong>Quality First</strong>
+                        <p>Every job done right — no shortcuts, no excuses.</p>
+                    </div>
+                    <div class="pillar">
+                        <strong>Old-School Skills</strong>
+                        <p>Techniques and tools that stand the test of time.</p>
+                    </div>
+                    <div class="pillar">
+                        <strong>Fair & Local</strong>
+                        <p>Honest pricing, deep community roots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+    <div class="container">
+        <div class="services-header">
+            <div>
+                <div class="eyebrow">What We Do</div>
+                <h2 class="section-title">Six Trades,<br>One Standard</h2>
+            </div>
+            <p class="services-intro">From mechanical restoration to living landscapes — every service carries the same commitment to craft and durability.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card fade-up">
+                <div class="svc-num">01</div>
+                <div class="svc-icon">
+                    <!-- Wrench / tractor icon -->
+                    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <h3>Tractor Repair & Restoration</h3>
+                <p>From routine maintenance to full restorations, we keep your iron running right. Old Farmalls, John Deeres, Olivers — we know these machines inside and out.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="svc-num">02</div>
+                <div class="svc-icon">
+                    <!-- Car icon -->
+                    <svg viewBox="0 0 24 24"><path d="M5 17H3a1 1 0 0 1-1-1v-4a4 4 0 0 1 .5-2L5 6h14l2.5 4a4 4 0 0 1 .5 2v4a1 1 0 0 1-1 1h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/></svg>
+                </div>
+                <h3>Vintage Auto Restoration</h3>
+                <p>Classic cars deserve classic attention. We restore vintage and antique automobiles with care — mechanical work, bodywork, and everything in between.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="svc-num">03</div>
+                <div class="svc-icon">
+                    <!-- Wood/saw icon -->
+                    <svg viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7-7H4a2 2 0 0 0-2 2v17z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
+                </div>
+                <h3>Custom Woodworking</h3>
+                <p>Hand-crafted furniture, signs, cabinetry, and more. We work with local hardwoods to create pieces built to last generations.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="svc-num">04</div>
+                <div class="svc-icon">
+                    <!-- Anchor / boat icon -->
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="22"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
+                </div>
+                <h3>Boat Repair & Restoration</h3>
+                <p>Hull work, engine service, fiberglass repair, interior woodwork — we get your boat lake-ready and keep it there. Old wood boats are a specialty.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="svc-num">05</div>
+                <div class="svc-icon">
+                    <!-- Tree icon -->
+                    <svg viewBox="0 0 24 24"><path d="M17 14l-5-9-5 9h10z"/><path d="M12 14v7M9 21h6"/></svg>
+                </div>
+                <h3>Tree Planting & Care</h3>
+                <p>We plant, establish, and care for trees — from windbreaks and orchard rows to shade trees and privacy plantings. Long-term thinking for the land.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="svc-num">06</div>
+                <div class="svc-icon">
+                    <!-- Leaf / plant icon -->
+                    <svg viewBox="0 0 24 24"><path d="M2 22l10-11"/><path d="M20.5 7.5A2.5 10 0 0 1 13 15l-.5.5A2.5 10 0 0 1 5 8l.5-.5A2.5 10 0 0 1 13 0l.5.5A2.5 10 0 0 1 20.5 7.5z"/></svg>
+                </div>
+                <h3>Gardening & Landscaping</h3>
+                <p>Vegetable gardens, perennial beds, lawn care, and more. We'll help you grow something beautiful — from first planting through harvest and beyond.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── QUOTE BANNER ── -->
+<div id="quote-banner">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Good work speaks for itself. We just make sure it's loud enough.</p>
+    <p class="quote-attr">— Heinemann Farms LLC</p>
+</div>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+    <div class="container">
+        <div class="portfolio-header">
+            <div>
+                <div class="eyebrow">Our Work</div>
+                <h2 class="section-title">The Portfolio</h2>
+            </div>
+            <a href="#contact" class="port-btn">Start a Project</a>
+        </div>
+
+        <div class="portfolio-grid">
+
+            <!--
+                PHOTO TIP: Inside each .port-bg div, add an img tag like:
+                <img src="./images/portfolio-1.jpg" alt="description">
+                You can then remove the .port-placeholder div.
+            -->
+
+            <div class="port-item fade-up">
+                <div class="port-inner">
+                    <div class="port-bg pb1">
+                        <div class="port-placeholder">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            Add Photo
+                        </div>
+                    </div>
+                    <span class="port-label">Tractor Restoration</span>
+                    <div class="port-overlay">
+                        <h4>1952 Farmall M</h4>
+                        <p>Full mechanical &amp; cosmetic restoration</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="port-item fade-up">
+                <div class="port-inner">
+                    <div class="port-bg pb2">
+                        <div class="port-placeholder">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            Add Photo
+                        </div>
+                    </div>
+                    <span class="port-label">Vintage Auto</span>
+                    <div class="port-overlay">
+                        <h4>Classic Pickup Rebuild</h4>
+                        <p>Engine rebuild &amp; custom bodywork</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="port-item fade-up">
+                <div class="port-inner">
+                    <div class="port-bg pb3">
+                        <div class="port-placeholder">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            Add Photo
+                        </div>
+                    </div>
+                    <span class="port-label">Woodworking</span>
+                    <div class="port-overlay">
+                        <h4>Walnut Dining Table</h4>
+                        <p>Hand-crafted from local hardwood</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="port-item fade-up">
+                <div class="port-inner">
+                    <div class="port-bg pb4">
+                        <div class="port-placeholder">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            Add Photo
+                        </div>
+                    </div>
+                    <span class="port-label">Boat Repair</span>
+                    <div class="port-overlay">
+                        <h4>1960s Wooden Runabout</h4>
+                        <p>Full hull &amp; interior restoration</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="port-item fade-up">
+                <div class="port-inner">
+                    <div class="port-bg pb5">
+                        <div class="port-placeholder">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            Add Photo
+                        </div>
+                    </div>
+                    <span class="port-label">Tree Planting</span>
+                    <div class="port-overlay">
+                        <h4>Orchard Row Planting</h4>
+                        <p>40 apple &amp; pear trees established</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="port-item fade-up">
+                <div class="port-inner">
+                    <div class="port-bg pb6">
+                        <div class="port-placeholder">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            Add Photo
+                        </div>
+                    </div>
+                    <span class="port-label">Gardening</span>
+                    <div class="port-overlay">
+                        <h4>Kitchen Garden Design</h4>
+                        <p>Raised beds, perennial herbs &amp; borders</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-grid">
+
+            <div class="fade-up">
+                <div class="eyebrow">Get In Touch</div>
+                <h2 class="section-title">Let's Talk<br>About Your Project</h2>
+                <p class="contact-text">
+                    Have a tractor that needs some love? A boat sitting in the barn? A piece of land you want to bring back to life? Reach out — we'd love to hear about it.
+                </p>
+
+                <div class="contact-detail">
+                    <div class="cd-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="cd-text">
+                        <strong>Location</strong>
+                        <span>Wisconsin, USA</span>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="cd-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="cd-text">
+                        <strong>Phone</strong>
+                        <!-- Update with your real phone number -->
+                        <span>(000) 000-0000</span>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="cd-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="cd-text">
+                        <strong>Email</strong>
+                        <!-- Update with your real email -->
+                        <span>info@heinemannfarmsllc.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-up">
+                <!-- To actually send emails, connect this form to Formspree or EmailJS -->
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="first_name" placeholder="Jane" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="last_name" placeholder="Smith" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="jane@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Needed</label>
+                        <select name="service" required>
+                            <option value="" disabled selected>Select a service…</option>
+                            <option>Tractor Repair &amp; Restoration</option>
+                            <option>Vintage Auto Restoration</option>
+                            <option>Custom Woodworking</option>
+                            <option>Boat Repair &amp; Restoration</option>
+                            <option>Tree Planting &amp; Care</option>
+                            <option>Gardening &amp; Landscaping</option>
+                            <option>Other / Multiple Services</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tell Us About Your Project</label>
+                        <textarea name="message" placeholder="Describe what you need help with…" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <a href="#" class="footer-logo">Heinemann Farms LLC</a>
+    <p class="footer-copy" id="footerCopy"></p>
+    <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</footer>
+
+<script>
+    // Dynamic copyright year
+    document.getElementById('footerCopy').textContent =
+        '© ' + new Date().getFullYear() + ' Heinemann Farms LLC. All rights reserved.';
+
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    function closeNav() {
+        navLinks.classList.remove('open');
+    }
+
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('open') &&
+            !navLinks.contains(e.target) &&
+            !hamburger.contains(e.target)) {
+            navLinks.classList.remove('open');
+        }
+    });
+
+    // Scroll-triggered fade-up animations
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, idx) => {
+            if (entry.isIntersecting) {
+                const siblings = entry.target.parentElement.querySelectorAll('.fade-up');
+                const i = Array.from(siblings).indexOf(entry.target);
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Contact form — wire to Formspree / EmailJS for real sending
+    function handleSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.textContent = 'Message Sent!';
+        btn.style.background = '#2D7A3A';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.textContent = 'Send Message';
+            btn.style.background = '';
+            btn.disabled = false;
+            e.target.reset();
+        }, 3500);
+    }
+</script>
+
+</body>
+</html>
