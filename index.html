@@ -1478,10 +1478,16 @@
         btn.disabled = true;
 
         try {
+            const data = {};
+            new FormData(form).forEach((val, key) => data[key] = val);
+
             const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
                 method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
+                body: JSON.stringify(data),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
             });
 
             if (res.ok) {
@@ -1494,9 +1500,12 @@
                     btn.disabled = false;
                 }, 4000);
             } else {
-                throw new Error();
+                const body = await res.json().catch(() => ({}));
+                console.error('Formspree error:', res.status, body);
+                throw new Error(body.error || res.status);
             }
-        } catch {
+        } catch (err) {
+            console.error('Submit failed:', err);
             btn.textContent = 'Error — please try again';
             btn.style.background = '#8B2020';
             setTimeout(() => {
